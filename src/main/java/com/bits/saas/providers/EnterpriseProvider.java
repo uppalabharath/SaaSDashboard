@@ -37,7 +37,7 @@ public class EnterpriseProvider {
 	@POST @Path("create")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public Response createEnterprise(Enterprise enterprise) throws AppException{
+    public Response create(Enterprise enterprise) throws AppException{
 
         LOG.info("In create enterprise");
         try{
@@ -56,7 +56,7 @@ public class EnterpriseProvider {
 	@GET
 	@Path("{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getEnterprise(@PathParam("id") Long id) throws AppException {
+	public Response get(@PathParam("id") Long id) throws AppException {
 		LOG.info("In getting enterprise");
 		try {
 			Enterprise enterprise = enterpriseService.getEnterprise(id);
@@ -70,7 +70,7 @@ public class EnterpriseProvider {
 	@GET
 	@Path("delete/{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response deleteEnterprise(@PathParam("id") Long id) throws AppException {
+	public Response delete(@PathParam("id") Long id) throws AppException {
 		LOG.info("In getting enterprise");
 		try {
 			int result = enterpriseService.delete(id);
@@ -88,7 +88,7 @@ public class EnterpriseProvider {
 	@POST @Path("update")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public Response updateEnterprise(Enterprise enterprise) throws AppException{
+    public Response update(Enterprise enterprise) throws AppException{
 
         LOG.info("In update enterprise");
         try{
