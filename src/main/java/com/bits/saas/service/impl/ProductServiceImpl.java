@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bits.saas.dao.IProductDao;
+import com.bits.saas.dao.IProductDetailDao;
 import com.bits.saas.exception.DaoExcpetion;
 import com.bits.saas.exception.ServiceException;
 import com.bits.saas.pojo.Product;
+import com.bits.saas.pojo.ProductDetail;
 import com.bits.saas.service.IProductService;
 
 @Service("IProductService")
@@ -20,12 +22,17 @@ public class ProductServiceImpl implements IProductService {
 
 	@Autowired
 	private IProductDao productDao;
+	@Autowired private IProductDetailDao productDetailDao;
 
 	@Override
-	public int create(Product product) throws ServiceException {
+	public long create(Product product) throws ServiceException {
 		LOG.info("creating product in service");
 		try {
-			return productDao.create(product);
+			long result = productDao.create(product);
+			product.setId(result);
+			ProductDetail productDetail = new ProductDetail();
+			productDetail.setProduct(product);
+			return productDetailDao.create(productDetail);
 		} catch (DaoExcpetion e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
@@ -35,6 +42,7 @@ public class ProductServiceImpl implements IProductService {
 	public int delete(long id) throws ServiceException {
 		LOG.info("deleting product in service");
 		try {
+			productDetailDao.delete(id);
 			return productDao.delete(id);
 		} catch (DaoExcpetion e) {
 			throw new ServiceException(e.getMessage(), e);

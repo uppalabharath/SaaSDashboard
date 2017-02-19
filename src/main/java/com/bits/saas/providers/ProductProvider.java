@@ -32,7 +32,7 @@ public class ProductProvider {
 	public Response create(Product product) throws AppException {
 		LOG.info("In Provider create product");
 		try {
-			int result = productService.create(product);
+			long result = productService.create(product);
 			if (result > 0) {
 				return Response.status(Response.Status.OK).entity(new SuccessMessage(Response.Status.OK.getStatusCode(),"Product created Successfully")).build();
 			} else {

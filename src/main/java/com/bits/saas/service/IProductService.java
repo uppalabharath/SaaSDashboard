@@ -10,7 +10,7 @@ import com.bits.saas.pojo.Product;
 public interface IProductService {
 	
 	@Transactional
-	int create(Product product) throws ServiceException;
+	long create(Product product) throws ServiceException;
 	
 	@Transactional
 	int delete(long id) throws ServiceException;

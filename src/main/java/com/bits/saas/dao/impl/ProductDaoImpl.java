@@ -24,12 +24,16 @@ public class ProductDaoImpl implements IProductDao {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public int create(Product product) throws DaoExcpetion {
+	public long create(Product product) throws DaoExcpetion {
 		LOG.info("In create product in dao");
 		try {
 			long productId = jdbcTemplate.queryForObject(DBQueries.PRODUCT_GET_SEQ, Long.class);
 			LOG.info("Generated Id:: "+productId);
-			return jdbcTemplate.update(DBQueries.PRODUCT_INSERT, new Object[] {productId, product.getName(),product.getEnterprise().getId()});
+			long result = jdbcTemplate.update(DBQueries.PRODUCT_INSERT, new Object[] {productId, product.getName(),product.getEnterprise().getId()});
+			if(result > 0) {
+				return productId;
+			}
+			return result;
 		} catch (DataAccessException daEx) {
 			throw new DaoExcpetion(daEx.getMessage(), daEx);
 		}
