@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bits.saas.dao.IProductDetailDao;
+import com.bits.saas.dao.rs.mapper.ProductDetailRowMapper;
 import com.bits.saas.exception.DaoExcpetion;
 import com.bits.saas.pojo.ProductDetail;
 import com.bits.saas.util.query.DBQueries;
@@ -37,22 +38,25 @@ public class ProductDetailDaoImpl implements IProductDetailDao {
 		// TODO Auto-generated method stub
 		LOG.info("In update product Detail");
 		try {
-
+			return jdbcTemplate.update(DBQueries.PRODUCTDETAIL_UPDATE_BYPRODID, new Object[] {
+					productDetail.getBlock1(),
+					productDetail.getBlock2(),
+					productDetail.getBlock3(),
+					productDetail.getProduct().getId()
+			});
 		} catch (DataAccessException daEx) {
 			throw new DaoExcpetion(daEx.getMessage(), daEx);
 		}
-		return 0;
 	}
 
 	@Override
 	public ProductDetail get(long id) throws DaoExcpetion {
 		LOG.info("In retrieve product Detail");
 		try {
-			//return jdbcTemplate.update(DBQueries.PRODUCTDETAIL_DELETE_BYPRODID,new Object[] {id});
+			return jdbcTemplate.queryForObject(DBQueries.PRODUCTDETAIL_SELECT_BYPRODID,new Object[] {id}, new ProductDetailRowMapper());
 		} catch (DataAccessException daEx) {
 			throw new DaoExcpetion(daEx.getMessage(), daEx);
 		}
-		return null;
 	}
 
 	@Override
