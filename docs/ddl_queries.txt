@@ -126,3 +126,8 @@ CREATE TABLE SPPRODUCTDETAIL
     CONSTRAINT REQVOTE_FEATUREREQ_FK FOREIGN KEY (REQUEST_ID) REFERENCES SPFEATUREREQUEST(REQUEST_ID)
   );
   
+  alter table spcustomerrevenue modify month number(2) not null;
+alter table spcustomerrevenue modify year number(4) not null;
+alter table spcustomerrevenue modify customer_id number(9) not null;
+alter table spcustomerrevenue modify amount number(11,3) not null;
+alter table spfeaturerequest modify impact_factor number(5,2) default 0 not null ;
