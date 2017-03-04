@@ -37,7 +37,7 @@ public class ProductDetailProvider {
 		}
 	}
 	
-	@POST @Path("/update")
+	@POST @Path("update")
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response update(ProductDetail productDetail) throws AppException {
