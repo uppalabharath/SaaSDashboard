@@ -1,0 +1,177 @@
+Useful links:
+http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
+3. Try tutorials to use jersey and Hibernate
+    https://jaxenter.com/netbeans/from-database-to-restful-web-service-to-html5-in-10-minutes
+    http://www.oracle.com/webfolder/technetwork/tutorials/obe/cloud/apaas/node-basicRest/nodecloud-REST.html
+    https://technology.amis.nl/2015/05/14/java-web-application-sending-json-messages-through-websocket-to-html5-browser-application-for-real-time-push/
+    https://galobalda.wordpress.com/2013/08/01/how-to-connect-to-a-pdb-using-oracle-em-express/
+        select * from v$pdbs;
+        alter session set container=pdborcl;
+        alter database pdborcl open read write;
+    http://dba.stackexchange.com/questions/60806/oracle-12c-create-user
+    http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/2day_dba/12cr1db_ch3emexp/12cr1db_ch3emexp.html#section3
+    http://stackoverflow.com/questions/30018111/jersey-maven-quickstart-archetype-in-eclipse
+    http://www.vogella.com/tutorials/REST/article.html
+    http://www.9threes.com/2015/01/restful-java-client-with-jersey-client.html
+    ** http://www.codingpedia.org/ama/restful-web-services-example-in-java-with-jersey-spring-and-mybatis/
+    https://docs.oracle.com/cd/E19798-01/821-1841/giepu/index.html
+    http://www.mkyong.com/java/jackson-2-convert-java-object-to-from-json/
+    ** https://github.com/jersey/jersey/tree/master/examples/bookstore-webapp
+    ** https://needhamia.com/?page_id=365
+    http://www.journaldev.com/2593/spring-jdbc-example
+    ** http://www.javatpoint.com/spring-JdbcTemplate-tutorial
+    http://www.journaldev.com/2593/spring-jdbc-example
+    https://www.tutorialspoint.com/spring/spring_transaction_management.htm
+    **http://www.vogella.com/tutorials/SpringJDBC/article.html
+    -- Transaction management --
+    using annotations:: http://www.journaldev.com/2603/spring-transaction-management-jdbc-example
+    Programmatic:: https://www.tutorialspoint.com/spring/programmatic_management.htm
+    http://karlagius.com/2010/12/05/restful-web-applications-with-jersey-and-spring/
+    http://www.dawnseeker8.com/blog/2015/07/jersey-2-spring-4-crud-example/
+    ** http://stackoverflow.com/questions/6827752/whats-the-difference-between-component-repository-service-annotations-in
+    https://github.com/jersey/jersey/tree/master/examples/helloworld-spring-webapp
+    ****http://www.dawnseeker8.com/blog/2015/07/jersey-2-spring-4-crud-example/
+    http://docs.spring.io/spring/docs/3.1.x/spring-framework-reference/html/beans.html#beans-factory-scopes
+    **http://www.codingpedia.org/ama/tutorial-rest-api-design-and-implementation-in-java-with-jersey-and-spring/
+    https://dzone.com/articles/spring-transaction-management
+    -- error handling in rest --
+    **http://www.codingpedia.org/ama/error-handling-in-rest-api-with-jersey/
+    -- demo project --
+    https://github.com/Codingpedia/demo-rest-jersey-spring/tree/master/src/main/java/org/codingpedia/demo
+    -- full tutorial --
+    ****http://www.codingpedia.org/ama/tutorial-rest-api-design-and-implementation-in-java-with-jersey-and-spring/
+    http://stackoverflow.com/questions/13557442/what-does-provider-in-jax-rs-mean
+    -- ui --
+    https://blog.miguelgrinberg.com/post/writing-a-javascript-rest-client
+    https://spring.io/guides/gs/consuming-rest-angularjs/
+    http://draptik.github.io/blog/2013/07/13/angularjs-example-using-a-java-restful-web-service/
+    **http://www.concretepage.com/spring-4/consume-restful-web-service-using-angularjs-spring-4-rest-json-with-ngresource-and-http-example
+    **http://www.javascriptatoms.com/2013/12/create-an-input-form-that-automatically-generates-json-with-angularjs/
+    https://angular-ui.github.io/bootstrap/
+    **https://scotch.io/tutorials/how-to-correctly-use-bootstrapjs-and-angularjs-together
+    https://www.w3schools.com/angular/angular_http.asp
+    http://blog.sodhanalibrary.com/2015/07/header-design-with-angularjs-material-ui.html#.WLXDGW-GOpo
+    -- form validation links --
+    http://stackoverflow.com/questions/22098584/angularjs-input-validation-with-no-enclosing-form
+    https://www.w3schools.com/angular/angular_http.asp
+    **http://stackoverflow.com/questions/21786492/if-statement-in-ng-click
+    **http://stackoverflow.com/questions/34869287/ng-messages-not-displaying-validation-errors-properly
+    http://stackoverflow.com/questions/25866121/angular-js-show-message-if-ng-repeat-is-empty
+    -- angular js plugin for eclipse --
+    https://github.com/angelozerr/angularjs-eclipse
+    https://github.com/angelozerr/angularjs-eclipse/wiki/Getting-Started
+    -- JerSey Filter --
+    http://www.codingpedia.org/ama/how-to-add-cors-support-on-the-server-side-in-java-with-jersey/
+    -- Spring Rest --
+    http://www.journaldev.com/2552/spring-rest-example-tutorial-spring-restful-web-services
+    
+    -- To retrieve Primary Key Spring --
+    http://stackoverflow.com/questions/10597477/getting-auto-generated-key-from-row-insertion-in-spring-3-postgresql-8-4-9
+    -- Git --
+    https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+    
+    -- Starting a server --
+    
+    http://localhost:8080/SaasDashboard/rest/enterprise/2
+    http://localhost:8080/SaasDashboard/rest/enterprise/create
+    http://localhost:8080/SaasDashboard/rest/enterprise/all
+    http://localhost:8080/SaasDashboard/rest/enterprise/create
+    http://localhost:8080/SaasDashboard/rest/enterprise/update
+    http://localhost:8080/SaasDashboard/rest/enterprise/delete/2
+    
+    http://localhost:8080/SaasDashboard/rest/product/all/1
+    http://localhost:8080/SaasDashboard/rest/product/create
+    {"name":"Product1","enterprise":{"id":1}}
+    http://localhost:8080/SaasDashboard/rest/product/1
+    http://localhost:8080/SaasDashboard/rest/product/update
+    {"id":1,"name":"Product01","enterprise":{"id":1}}
+    http://localhost:8080/SaasDashboard/rest/product/delete/2
+    
+    http://localhost:8080/SaasDashboard/rest/productdetail/8
+    {
+  "id": 0,
+  "block1": null,
+  "block2": null,
+  "block3": null,
+  "product": {
+    "id": 8,
+    "name": "Product8",
+    "enterprise": null
+  }
+}
+    http://localhost:8080/SaasDashboard/rest/productdetail/update
+    {
+        "block1":"Details",
+        "block2":"Updates",
+        "block3":"Contact Us",
+        "product":{
+            "id":8
+        }
+    }
+    
+    http://localhost:8080/SaasDashboard/rest/customer/1
+    {
+  "id": 1,
+  "name": "customer1",
+  "email": "customer1@invalidmail.com",
+  "reputation": 0,
+  "product": {
+    "id": 0,
+    "name": "Product8",
+    "enterprise": null
+  }
+}
+    http://localhost:8080/SaasDashboard/rest/customer/all/8
+    [
+  {
+    "id": 1,
+    "name": "customer1",
+    "email": "customer1@invalidmail.com",
+    "reputation": 0,
+    "product": {
+      "id": 0,
+      "name": "Product8",
+      "enterprise": null
+    }
+  }
+]
+    http://localhost:8080/SaasDashboard/rest/customer/create
+    {
+  "name": "customer2",
+  "email": "customer1@invalidmail.com",
+  "product": {
+    "id": 8
+  }
+}
+    http://localhost:8080/SaasDashboard/rest/customer/update
+    {
+	"id":2,
+  "name": "customer2",
+  "email": "customer2@invalidmail.com",
+  "product": {
+    "id": 8
+  }
+}
+    http://localhost:8080/SaasDashboard/rest/customer/delete/2
+
+
+    
+    
+    http://localhost:8080/SaasDashboard/test/ent/1
+    
+    Verify in home to check whether we can access github
+    https://github.com/uppalabharath/SaaSDashboard.git
+    https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+    https://github.com/uppalabharath/SaaSDashboard_client.git
+    
+    http://www.isro.gov.in/recruitment-to-post-of-scientist-engineer-%E2%80%98sc%E2%80%99-disciplines-of-electronics-mechanical-and-computer
+    
+    
+    -- 4 March 2016 --
+    provider for WorkAround -- done
+    design some algo for Reputation and impact factor
+    When revenue is added reputation has to be calculated
+    When upvoted for request or workaround reputation needs to be added and impact factor calculation
+    Complete atleast a screen and end to end flow for customer and customer revenue
+        Customer end to end flow -- done
+    Freezing an Feature request
