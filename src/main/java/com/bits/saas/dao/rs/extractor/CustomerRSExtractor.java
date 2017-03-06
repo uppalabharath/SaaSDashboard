@@ -18,8 +18,9 @@ public class CustomerRSExtractor implements ResultSetExtractor<Customer> {
 		customer.setName(rs.getString(2));
 		customer.setEmail(rs.getString(3));
 		customer.setReputation(rs.getFloat(4));
+		customer.setRevenue(rs.getFloat(5));
 		Product product = new Product();
-		product.setName(rs.getString(5));
+		product.setName(rs.getString(6));
 		customer.setProduct(product);
 		return customer;
 	}

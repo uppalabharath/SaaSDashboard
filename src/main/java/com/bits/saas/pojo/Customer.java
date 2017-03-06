@@ -14,8 +14,10 @@ public class Customer implements Serializable {
 	
 	private float reputation;
 	
-	private Product product;
+	private float revenue;
 
+	private Product product;
+	
 	public long getId() {
 		return id;
 	}
@@ -54,6 +56,14 @@ public class Customer implements Serializable {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public float getRevenue() {
+		return revenue;
+	}
+
+	public void setRevenue(float revenue) {
+		this.revenue = revenue;
 	}
 
 }

@@ -17,9 +17,10 @@ public class ProductRSExtractor implements ResultSetExtractor<Product> {
 		Product product = new Product();
 		product.setId(rs.getLong(1));
 		product.setName(rs.getString(2));
+		product.setRevenue(rs.getFloat(3));
 		Enterprise enterprise = new Enterprise();
-		enterprise.setId(rs.getLong(3));
-		enterprise.setName(rs.getString(4));
+		enterprise.setId(rs.getLong(4));
+		enterprise.setName(rs.getString(5));
 		product.setEnterprise(enterprise);
 		return product;
 	}

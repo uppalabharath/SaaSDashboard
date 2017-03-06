@@ -10,6 +10,8 @@ public class Product implements Serializable{
 	
 	private String name;
 	
+	private float revenue;
+	
 	private Enterprise enterprise;
 
 	public long getId() {
@@ -34,6 +36,14 @@ public class Product implements Serializable{
 
 	public void setEnterprise(Enterprise enterprise) {
 		this.enterprise = enterprise;
+	}
+
+	public float getRevenue() {
+		return revenue;
+	}
+
+	public void setRevenue(float revenue) {
+		this.revenue = revenue;
 	}
 	
 

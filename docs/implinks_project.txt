@@ -51,6 +51,7 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     **https://scotch.io/tutorials/how-to-correctly-use-bootstrapjs-and-angularjs-together
     https://www.w3schools.com/angular/angular_http.asp
     http://blog.sodhanalibrary.com/2015/07/header-design-with-angularjs-material-ui.html#.WLXDGW-GOpo
+    https://material.angularjs.org/latest/demo/select
     -- form validation links --
     http://stackoverflow.com/questions/22098584/angularjs-input-validation-with-no-enclosing-form
     https://www.w3schools.com/angular/angular_http.asp
@@ -153,7 +154,8 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
   }
 }
     http://localhost:8080/SaasDashboard/rest/customer/delete/2
-
+    http://localhost:8080/SaasDashboard/rest/customer/all/8
+    http://localhost:8080/SaasDashboard/rest/customer/1
 
     
     
