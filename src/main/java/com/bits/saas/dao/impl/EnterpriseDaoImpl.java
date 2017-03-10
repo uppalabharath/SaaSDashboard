@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bits.saas.dao.IEnterpriseDao;
 import com.bits.saas.dao.rs.mapper.EnterpriseRowMapper;
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.pojo.Enterprise;
 import com.bits.saas.util.query.DBQueries;
 
@@ -25,51 +25,51 @@ public class EnterpriseDaoImpl implements IEnterpriseDao {
     private static final Logger LOG = LogManager.getLogger(IEnterpriseDao.class);
 
     @Override
-    public int create(Enterprise enterprise) throws DaoExcpetion {
+    public int create(Enterprise enterprise) throws DaoException {
         LOG.info(enterprise.getId()+"::"+enterprise.getName());
         try {
         	return jdbcTemplate.update(DBQueries.ENTERPRISE_INSERT, new Object[] {enterprise.getName()});
         }catch (DataAccessException daEx) {
-    		throw new DaoExcpetion(daEx.getMessage(),daEx);
+    		throw new DaoException(daEx.getMessage(),daEx);
     	}
     }
 
     @Override
-    public int delete(long id) throws DaoExcpetion {
+    public int delete(long id) throws DaoException {
     	LOG.info("Delete enterprise:: "+id);
     	try {
     		return jdbcTemplate.update(DBQueries.ENTERPRISE_DELETE_BYID, new Object[] {id});
     	}catch (DataAccessException daEx) {
-    		throw new DaoExcpetion(daEx.getMessage(),daEx);
+    		throw new DaoException(daEx.getMessage(),daEx);
     	}
     }
 
     @Override
-    public int update(Enterprise enterprise) throws DaoExcpetion {
+    public int update(Enterprise enterprise) throws DaoException {
     	LOG.info("Update:: "+enterprise.getId()+"::"+enterprise.getName());
     	try{
     		return jdbcTemplate.update(DBQueries.ENTERPRISE_UPDATE_BYID, new Object[] {enterprise.getName(),enterprise.getId()});
     	}catch (DataAccessException daEx) {
-    		throw new DaoExcpetion(daEx.getMessage(),daEx);
+    		throw new DaoException(daEx.getMessage(),daEx);
     	}
     }
 
     @Override
-    public List<Enterprise> getAll() throws DaoExcpetion {
+    public List<Enterprise> getAll() throws DaoException {
     	LOG.info("Enterprise get All in Dao");
     	try{
     		return jdbcTemplate.query(DBQueries.ENTERPRISE_SELECT_ALL, new EnterpriseRowMapper());
     	} catch (DataAccessException daEx) {
-    		throw new DaoExcpetion(daEx.getMessage(),daEx);
+    		throw new DaoException(daEx.getMessage(),daEx);
     	}
     }
 
     @Override
-    public Enterprise getEnterprise(long id) throws DaoExcpetion {
+    public Enterprise getEnterprise(long id) throws DaoException {
     	try {
     		return (Enterprise)jdbcTemplate.queryForObject(DBQueries.ENTERPRISE_SELECT_BYID, new Object[] {id}, new EnterpriseRowMapper());
     	} catch (DataAccessException daEx) {
-    		throw new DaoExcpetion(daEx.getMessage(),daEx);
+    		throw new DaoException(daEx.getMessage(),daEx);
     	}
     }
 

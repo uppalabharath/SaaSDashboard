@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bits.saas.dao.IFeatureRequestDao;
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.pojo.FeatureRequest;
 
 @Repository("IFeatureRequestDao")
@@ -19,43 +19,43 @@ public class FeatureRequestDaoImpl implements IFeatureRequestDao {
 	@Autowired private JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public long create(FeatureRequest request) throws DaoExcpetion {
+	public long create(FeatureRequest request) throws DaoException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public long update(FeatureRequest request) throws DaoExcpetion {
+	public long update(FeatureRequest request) throws DaoException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public long delete(long id) throws DaoExcpetion {
+	public long delete(long id) throws DaoException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public FeatureRequest get(long id) throws DaoExcpetion {
+	public FeatureRequest get(long id) throws DaoException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<FeatureRequest> getRequestsByCustomer(long id) throws DaoExcpetion {
+	public List<FeatureRequest> getRequestsByCustomer(long id) throws DaoException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<FeatureRequest> getRequestsByProduct(long id) throws DaoExcpetion {
+	public List<FeatureRequest> getRequestsByProduct(long id) throws DaoException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public long upvote(long id) throws DaoExcpetion {
+	public long upvote(long id) throws DaoException {
 		// TODO Auto-generated method stub
 		return 0;
 	}

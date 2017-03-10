@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bits.saas.dao.IEnterpriseDao;
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.exception.ServiceException;
 import com.bits.saas.pojo.Enterprise;
 import com.bits.saas.service.IEnterpriseService;
@@ -18,6 +18,7 @@ import com.bits.saas.service.IEnterpriseService;
  * Created by Bharath Kumar Uppala on 12/02/2017.
  */
 @Service("IEnterpriseService")
+@Transactional
 public class EnterpriseServiceImpl implements IEnterpriseService {
 
     @Autowired private IEnterpriseDao enterpriseDao;
@@ -29,32 +30,29 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
 	}
 
     @Override
-    @Transactional
     public int create(Enterprise enterprise) throws ServiceException{
         LOG.info(enterprise.getId()+"::"+enterprise.getName());
         try {
 			return enterpriseDao.create(enterprise);
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(),e);
 		}
     }
 
     @Override
-    @Transactional
     public int delete(long id) throws ServiceException{
         try {
 			return enterpriseDao.delete(id);
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(),e);
 		}
     }
 
     @Override
-    @Transactional
     public int update(Enterprise enterprise) throws ServiceException{
         try {
 			return enterpriseDao.update(enterprise);
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(),e);
 		}
     }
@@ -64,7 +62,7 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
     	LOG.info("Getting enterpriseDao::");
     	try {
 			return enterpriseDao.getAll();
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(),e);
 		}
     }
@@ -73,7 +71,7 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
     public Enterprise getEnterprise(long id) throws ServiceException{
         try {
 			return enterpriseDao.getEnterprise(id);
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(),e);
 		}
     }

@@ -6,14 +6,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bits.saas.dao.ICustomerDao;
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.exception.ServiceException;
 import com.bits.saas.pojo.Customer;
 import com.bits.saas.service.ICustomerService;
 
 @Service("ICustomerService")
+@Transactional
 public class CustomerServiceImpl implements ICustomerService {
 	
 	@Autowired private ICustomerDao customerDao;
@@ -25,7 +27,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		LOG.info("In create");
 		try {
 			return customerDao.create(customer);
-		} catch(DaoExcpetion daEx) {
+		} catch(DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(),daEx);
 		}
 	}
@@ -35,7 +37,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		LOG.info("In get");
 		try {
 			return customerDao.get(id);
-		} catch(DaoExcpetion daEx) {
+		} catch(DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(),daEx);
 		}
 	}
@@ -45,7 +47,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		LOG.info("In update");
 		try {
 			return customerDao.update(customer);
-		} catch(DaoExcpetion daEx) {
+		} catch(DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(),daEx);
 		}
 	}
@@ -55,7 +57,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		LOG.info("In delete");
 		try {
 			return customerDao.delete(id);
-		} catch(DaoExcpetion daEx) {
+		} catch(DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(),daEx);
 		}
 	}
@@ -65,7 +67,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		LOG.info("In getCustomersbyProductId");
 		try {
 			return customerDao.getCustomersbyProductId(productId);
-		} catch(DaoExcpetion daEx) {
+		} catch(DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(),daEx);
 		}
 	}

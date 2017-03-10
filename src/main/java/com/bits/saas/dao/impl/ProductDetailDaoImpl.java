@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bits.saas.dao.IProductDetailDao;
 import com.bits.saas.dao.rs.mapper.ProductDetailRowMapper;
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.pojo.ProductDetail;
 import com.bits.saas.util.query.DBQueries;
 
@@ -21,7 +21,7 @@ public class ProductDetailDaoImpl implements IProductDetailDao {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public long create(ProductDetail productDetail) throws DaoExcpetion {
+	public long create(ProductDetail productDetail) throws DaoException {
 		LOG.info("In create product Detail");
 		try {
 			return jdbcTemplate.update(DBQueries.PRODUCT_DETAIL_INSERT, new Object[] {
@@ -29,12 +29,12 @@ public class ProductDetailDaoImpl implements IProductDetailDao {
 					"","",""
 			});
 		} catch (DataAccessException daEx) {
-			throw new DaoExcpetion(daEx.getMessage(), daEx);
+			throw new DaoException(daEx.getMessage(), daEx);
 		}
 	}
 
 	@Override
-	public long update(ProductDetail productDetail) throws DaoExcpetion {
+	public long update(ProductDetail productDetail) throws DaoException {
 		// TODO Auto-generated method stub
 		LOG.info("In update product Detail");
 		try {
@@ -45,27 +45,27 @@ public class ProductDetailDaoImpl implements IProductDetailDao {
 					productDetail.getProduct().getId()
 			});
 		} catch (DataAccessException daEx) {
-			throw new DaoExcpetion(daEx.getMessage(), daEx);
+			throw new DaoException(daEx.getMessage(), daEx);
 		}
 	}
 
 	@Override
-	public ProductDetail get(long id) throws DaoExcpetion {
+	public ProductDetail get(long id) throws DaoException {
 		LOG.info("In retrieve product Detail");
 		try {
 			return jdbcTemplate.queryForObject(DBQueries.PRODUCTDETAIL_SELECT_BYPRODID,new Object[] {id}, new ProductDetailRowMapper());
 		} catch (DataAccessException daEx) {
-			throw new DaoExcpetion(daEx.getMessage(), daEx);
+			throw new DaoException(daEx.getMessage(), daEx);
 		}
 	}
 
 	@Override
-	public long delete(long id) throws DaoExcpetion {
+	public long delete(long id) throws DaoException {
 		LOG.info("In delete product Detail");
 		try {
 			return jdbcTemplate.update(DBQueries.PRODUCTDETAIL_DELETE_BYPRODID,new Object[] {id});
 		} catch (DataAccessException daEx) {
-			throw new DaoExcpetion(daEx.getMessage(), daEx);
+			throw new DaoException(daEx.getMessage(), daEx);
 		}
 	}
 

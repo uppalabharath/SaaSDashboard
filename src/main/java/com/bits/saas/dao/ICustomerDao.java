@@ -2,19 +2,21 @@ package com.bits.saas.dao;
 
 import java.util.List;
 
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.pojo.Customer;
 
 public interface ICustomerDao {
 	
-	public long create(Customer customer) throws DaoExcpetion;
+	long create(Customer customer) throws DaoException;
 	
-	public Customer get(long id) throws DaoExcpetion;
+	Customer get(long id) throws DaoException;
 	
-	public long update(Customer customer) throws DaoExcpetion;
+	long update(Customer customer) throws DaoException;
 	
-	public long delete(long id) throws DaoExcpetion;
+	long delete(long id) throws DaoException;
 	
-	public List<Customer> getCustomersbyProductId(long productId) throws DaoExcpetion;
+	List<Customer> getCustomersbyProductId(long productId) throws DaoException;
+	
+	long updateRevenueandReputation(long id, float revenue, float reputation) throws DaoException;
 
 }

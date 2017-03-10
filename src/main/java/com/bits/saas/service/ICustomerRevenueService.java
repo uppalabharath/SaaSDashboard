@@ -11,7 +11,7 @@ public interface ICustomerRevenueService {
 
 	public long update(CustomerRevenue customerRevenue) throws ServiceException;
 
-	public long delete(long id) throws ServiceException;
+	public long delete(CustomerRevenue customerRevenue) throws ServiceException;
 
 	public List<CustomerRevenue> getRevenueByProduct(long id) throws ServiceException;
 

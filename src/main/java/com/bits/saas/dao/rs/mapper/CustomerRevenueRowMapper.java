@@ -12,7 +12,6 @@ public class CustomerRevenueRowMapper implements RowMapper<CustomerRevenue> {
 
 	@Override
 	public CustomerRevenue mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		CustomerRevenueRSExtractor extractor = new CustomerRevenueRSExtractor();
 		return extractor.extractData(rs);
 	}

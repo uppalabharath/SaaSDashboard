@@ -12,6 +12,8 @@ public class Product implements Serializable{
 	
 	private float revenue;
 	
+	private float reputation;
+	
 	private Enterprise enterprise;
 
 	public long getId() {
@@ -45,6 +47,13 @@ public class Product implements Serializable{
 	public void setRevenue(float revenue) {
 		this.revenue = revenue;
 	}
-	
+
+	public float getReputation() {
+		return reputation;
+	}
+
+	public void setReputation(float reputation) {
+		this.reputation = reputation;
+	}
 
 }

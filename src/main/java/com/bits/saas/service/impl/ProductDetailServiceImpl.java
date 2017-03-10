@@ -4,14 +4,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bits.saas.dao.IProductDetailDao;
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.exception.ServiceException;
 import com.bits.saas.pojo.ProductDetail;
 import com.bits.saas.service.IProductDetailService;
 
 @Service("IProductDetailService")
+@Transactional
 public class ProductDetailServiceImpl implements IProductDetailService {
 
 	private static final Logger LOG = LogManager.getLogger(ProductDetailServiceImpl.class);
@@ -23,7 +25,7 @@ public class ProductDetailServiceImpl implements IProductDetailService {
 		LOG.info("Create Product detail service");
 		try {
 			return productDetailDao.create(productDetail);
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
 	}
@@ -33,7 +35,7 @@ public class ProductDetailServiceImpl implements IProductDetailService {
 		LOG.info("update Product detail service");
 		try {
 			return productDetailDao.update(productDetail);
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
 	}
@@ -43,7 +45,7 @@ public class ProductDetailServiceImpl implements IProductDetailService {
 		LOG.info("Retrieve Product detail service");
 		try {
 			return productDetailDao.get(id);
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
 	}
@@ -53,7 +55,7 @@ public class ProductDetailServiceImpl implements IProductDetailService {
 		LOG.info("Delete Product detail service");
 		try {
 			return productDetailDao.delete(id);
-		} catch (DaoExcpetion e) {
+		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
 	}

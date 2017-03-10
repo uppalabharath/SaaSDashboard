@@ -156,8 +156,13 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     http://localhost:8080/SaasDashboard/rest/customer/delete/2
     http://localhost:8080/SaasDashboard/rest/customer/all/8
     http://localhost:8080/SaasDashboard/rest/customer/1
-
     
+    http://localhost:8080/SaasDashboard/rest/revenue/create
+    {"month":1,"year":2017,"amount":120.45,"customer":{"id":1}}
+    http://localhost:8080/SaasDashboard/rest/revenue/all/product/8
+    http://localhost:8080/SaasDashboard/rest/revenue/all/customer/1
+    http://localhost:8080/SaasDashboard/rest/revenue/delete
+    {"month":1,"year":2017,"amount":120.45,"customer":{"id":1}}
     
     http://localhost:8080/SaasDashboard/test/ent/1
     
@@ -169,7 +174,7 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     http://www.isro.gov.in/recruitment-to-post-of-scientist-engineer-%E2%80%98sc%E2%80%99-disciplines-of-electronics-mechanical-and-computer
     
     
-    -- 4 March 2016 --
+    -- 4 March 2017 --
     provider for WorkAround -- done
     design some algo for Reputation and impact factor
     When revenue is added reputation has to be calculated
@@ -177,3 +182,9 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     Complete atleast a screen and end to end flow for customer and customer revenue
         Customer end to end flow -- done
     Freezing an Feature request
+    
+    -- 9 March 2017 --
+    Update Product to get the repuatation
+    Verify Queries for Product for reputation
+    Work on customer Revenue functionality -- delete and get
+    Move Transactional attribute to the class level for all Services

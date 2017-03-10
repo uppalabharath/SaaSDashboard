@@ -6,14 +6,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bits.saas.dao.IWorkAroundDao;
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.exception.ServiceException;
 import com.bits.saas.pojo.WorkAround;
 import com.bits.saas.service.IWorkAroundService;
 
 @Service("IWorkAroundService")
+@Transactional
 public class WorkAroundServiceImpl implements IWorkAroundService {
 
 	private static final Logger LOG = LogManager.getLogger(WorkAroundServiceImpl.class);
@@ -26,7 +28,7 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 		LOG.info("In create");
 		try {
 			return workAroundDao.create(workAround);
-		} catch (DaoExcpetion daEx) {
+		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
 	}
@@ -36,7 +38,7 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 		LOG.info("In update");
 		try {
 			return workAroundDao.update(workAround);
-		} catch (DaoExcpetion daEx) {
+		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
 	}
@@ -46,7 +48,7 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 		LOG.info("In delete");
 		try {
 			return workAroundDao.delete(id);
-		} catch (DaoExcpetion daEx) {
+		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
 	}
@@ -56,7 +58,7 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 		LOG.info("In get");
 		try {
 			return workAroundDao.get(id);
-		} catch (DaoExcpetion daEx) {
+		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
 	}
@@ -66,7 +68,7 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 		LOG.info("In getAllbyRequest");
 		try {
 			return workAroundDao.getAllbyRequest(id);
-		} catch (DaoExcpetion daEx) {
+		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
 	}
@@ -76,7 +78,7 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 		LOG.info("In upvote");
 		try {
 			return workAroundDao.upvote(id);
-		} catch (DaoExcpetion daEx) {
+		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
 	}

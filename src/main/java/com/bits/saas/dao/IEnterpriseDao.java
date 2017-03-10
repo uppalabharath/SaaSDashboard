@@ -2,7 +2,7 @@ package com.bits.saas.dao;
 
 import java.util.List;
 
-import com.bits.saas.exception.DaoExcpetion;
+import com.bits.saas.exception.DaoException;
 import com.bits.saas.pojo.Enterprise;
 
 /**
@@ -11,13 +11,13 @@ import com.bits.saas.pojo.Enterprise;
 
 public interface IEnterpriseDao {
 
-    int create(Enterprise enterprise) throws DaoExcpetion;
+    int create(Enterprise enterprise) throws DaoException;
 
-    int delete(long id) throws DaoExcpetion;
+    int delete(long id) throws DaoException;
 
-    int update(Enterprise enterprise) throws DaoExcpetion;
+    int update(Enterprise enterprise) throws DaoException;
 
-    List<Enterprise> getAll() throws DaoExcpetion;
+    List<Enterprise> getAll() throws DaoException;
 
-    Enterprise getEnterprise(long id) throws DaoExcpetion;
+    Enterprise getEnterprise(long id) throws DaoException;
 }

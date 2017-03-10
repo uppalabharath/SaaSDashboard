@@ -2,12 +2,9 @@ package com.bits.saas.service;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import com.bits.saas.exception.ServiceException;
 import com.bits.saas.pojo.FeatureRequest;
 
-@Transactional
 public interface IFeatureRequestService {
 	
 	long create(FeatureRequest request) throws ServiceException;
