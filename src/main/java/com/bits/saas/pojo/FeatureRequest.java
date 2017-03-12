@@ -1,6 +1,7 @@
 package com.bits.saas.pojo;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class FeatureRequest implements Serializable {
 
@@ -12,6 +13,8 @@ public class FeatureRequest implements Serializable {
 	private int upvoteCount;
 	private Customer customer;
 	private float impactFactor;
+	private Timestamp creationDate;
+	private boolean freezed;
 	public long getId() {
 		return id;
 	}
@@ -47,6 +50,18 @@ public class FeatureRequest implements Serializable {
 	}
 	public void setImpactFactor(float impactFactor) {
 		this.impactFactor = impactFactor;
+	}
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
+	}
+	public boolean isFreezed() {
+		return freezed;
+	}
+	public void setFreezed(boolean freezed) {
+		this.freezed = freezed;
 	}
 
 }

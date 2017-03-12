@@ -19,5 +19,7 @@ public interface IFeatureRequestDao {
 	
 	List<FeatureRequest> getRequestsByProduct(long id) throws DaoException;
 	
-	long upvote(long id) throws DaoException;
+	long upvote(FeatureRequest request) throws DaoException;
+	
+	long freeze(long id) throws DaoException;
 }

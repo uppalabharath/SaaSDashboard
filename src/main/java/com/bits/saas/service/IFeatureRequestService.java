@@ -19,6 +19,8 @@ public interface IFeatureRequestService {
 	
 	List<FeatureRequest> getRequestsByProduct(long id) throws ServiceException;
 	
-	long upvote(long id) throws ServiceException;
+	long upvote(FeatureRequest request) throws ServiceException;
+	
+	long freeze(long id) throws ServiceException;
 
 }

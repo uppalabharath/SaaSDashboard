@@ -52,6 +52,10 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     https://www.w3schools.com/angular/angular_http.asp
     http://blog.sodhanalibrary.com/2015/07/header-design-with-angularjs-material-ui.html#.WLXDGW-GOpo
     https://material.angularjs.org/latest/demo/select
+    https://material.angularjs.org/latest/demo/divider
+    
+    https://hello-angularjs.appspot.com/removetablerow
+    http://stackoverflow.com/questions/27609428/remove-whole-table-row-angularjs-button
     -- form validation links --
     http://stackoverflow.com/questions/22098584/angularjs-input-validation-with-no-enclosing-form
     https://www.w3schools.com/angular/angular_http.asp
@@ -184,7 +188,16 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     Freezing an Feature request
     
     -- 9 March 2017 --
-    Update Product to get the repuatation
-    Verify Queries for Product for reputation
+    Update Product to get the reputation -- done
+    Verify Queries for Product for reputation -- done
     Work on customer Revenue functionality -- delete and get
-    Move Transactional attribute to the class level for all Services
+    Move Transactional attribute to the class level for all Services -- done
+    
+    From UI we get Request id and customer who is upvoting
+    Get customer using request_id -- to know the customer who raised FR
+    update customer reputation + 100 for FR and +50 for WorkAround
+    update impactfactor and upvote for feature request
+    insert into the featurerequest info table
+    
+    Verify Feature request and complete the provider
+    Try to finish the product detail UI and start the Customer UI

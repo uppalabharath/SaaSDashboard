@@ -8,11 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bits.saas.dao.ICustomerDao;
 import com.bits.saas.dao.IFeatureRequestDao;
+import com.bits.saas.dao.IFeatureRequestDetailDao;
+import com.bits.saas.dao.IProductDao;
 import com.bits.saas.exception.DaoException;
 import com.bits.saas.exception.ServiceException;
+import com.bits.saas.pojo.Customer;
 import com.bits.saas.pojo.FeatureRequest;
 import com.bits.saas.service.IFeatureRequestService;
+import com.bits.saas.util.ReputationCalulationUtil;
 
 @Service("IFeatureRequestService")
 @Transactional
@@ -22,12 +27,22 @@ public class FeatureRequestServiceImpl implements IFeatureRequestService {
 
 	@Autowired
 	private IFeatureRequestDao requestDao;
+	
+	@Autowired private ICustomerDao customerDao;
+	
+	@Autowired private IFeatureRequestDetailDao requestDetailDao;
+	
+	@Autowired private IProductDao productDao;
+	
+	private Customer customer;
 
 	@Override
 	public long create(FeatureRequest request) throws ServiceException {
 		LOG.info("In create ");
 		try {
-			return requestDao.create(request);
+				customer = getCustomer(request.getCustomer().getId());
+				request.setImpactFactor(calculateImpactFactor(customer.getReputation(), customer.getProduct().getReputation()));
+				return requestDao.create(request);
 		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
@@ -84,13 +99,45 @@ public class FeatureRequestServiceImpl implements IFeatureRequestService {
 	}
 
 	@Override
-	public long upvote(long id) throws ServiceException {
+	public long upvote(FeatureRequest request) throws ServiceException {
 		LOG.info("In upvote");
 		try {
-			return requestDao.upvote(id);
+			long result = requestDetailDao.create(request.getId(), request.getCustomer().getId());
+			if(result > 0){
+				float reputation = ReputationCalulationUtil.calculateReputation(getCustomer(request.getCustomer().getId()));
+				FeatureRequest featureRequest = get(request.getId());
+				customerDao.updateRevenueandReputation(featureRequest.getCustomer().getId(), 0, reputation);
+				productDao.updateRevenueandReputation(featureRequest.getCustomer().getProduct().getId(), 0, reputation);
+			}else{
+				throw new ServiceException("Upvote failed. ");
+			}
+			return requestDao.upvote(request);
 		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
+	}
+	
+	@Override
+	public long freeze(long id) throws ServiceException {
+		LOG.info("In Freeze");
+		try {
+			return requestDao.freeze(id);
+		} catch (DaoException daEx) {
+			throw new ServiceException(daEx.getMessage(), daEx);
+		}
+	}
+	
+	private float calculateImpactFactor(float customerReputation, float productReputation) {
+		LOG.info("Calculating Impact Factor while Creating request");
+		//TODO Ideally should not be But Safe measure to prevent Divide by Zero
+		if(productReputation == 0){
+			productReputation = 1;
+		}
+		return customerReputation/productReputation;
+	}
+	
+	private Customer getCustomer(long id) throws DaoException{
+		return customerDao.get(id);
 	}
 
 }

@@ -58,7 +58,7 @@ public class CustomerRevenueDaoImpl implements ICustomerRevenueDao {
 	public List<CustomerRevenue> getRevenueByProduct(long id) throws DaoException {
 		LOG.info("In get by product id");
 		try {
-			return jdbcTemplate.query(DBQueries.REVENUE_GET_BYPRODID, new Object[]{id}, new CustomerRevenueRowMapper());
+			return jdbcTemplate.query(DBQueries.REVENUE_SELECT_BYPRODID, new Object[]{id}, new CustomerRevenueRowMapper());
 		} catch (DataAccessException daEx) {
 			throw new DaoException(daEx.getMessage(), daEx);
 		}
@@ -68,7 +68,7 @@ public class CustomerRevenueDaoImpl implements ICustomerRevenueDao {
 	public List<CustomerRevenue> getRevenueByCustomer(long id) throws DaoException {
 		LOG.info("In get by customer id");
 		try {
-			return jdbcTemplate.query(DBQueries.REVENUE_GET_BYCUSTID, new Object[]{id},new CustomerRevenueRowMapper());
+			return jdbcTemplate.query(DBQueries.REVENUE_SELECT_BYCUSTID, new Object[]{id},new CustomerRevenueRowMapper());
 		} catch (DataAccessException daEx) {
 			throw new DaoException(daEx.getMessage(), daEx);
 		}
