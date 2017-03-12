@@ -17,6 +17,6 @@ public interface IWorkAroundService {
 
 	List<WorkAround> getAllbyRequest(long id) throws ServiceException;
 
-	long upvote(long id) throws ServiceException;
+	long upvote(WorkAround workAround) throws ServiceException;
 
 }

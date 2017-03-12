@@ -1,6 +1,7 @@
 package com.bits.saas.pojo;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class WorkAround implements Serializable {
 
@@ -11,6 +12,8 @@ public class WorkAround implements Serializable {
 	private FeatureRequest featureRequest;
 	private int upvoteCount;
 	private String description;
+	private Timestamp creationDate;
+	private Timestamp modifiedDate;
 	public long getId() {
 		return id;
 	}
@@ -40,6 +43,18 @@ public class WorkAround implements Serializable {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
+	}
+	public Timestamp getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(Timestamp modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 }

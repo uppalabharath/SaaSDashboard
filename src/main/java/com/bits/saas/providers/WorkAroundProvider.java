@@ -71,7 +71,7 @@ public class WorkAroundProvider {
 			if (result > 0) {
 				return Response.status(Response.Status.OK).entity(new SuccessMessage(Response.Status.OK.getStatusCode(),"WorkAround deleted Successfully")).build();
 			} else {
-				return Response.status(Response.Status.OK).entity(new SuccessMessage(Response.Status.OK.getStatusCode(),"WorkAround delete failed")).build();
+				return Response.status(Response.Status.OK).entity(new SuccessMessage(Response.Status.OK.getStatusCode(),"WorkAround delete not supported")).build();
 			}
 		}catch(ServiceException servEx) {
 			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Workaround delete failed with server error");
@@ -102,13 +102,14 @@ public class WorkAroundProvider {
 		}
 	}
 	
-	@GET
-	@Path("upvote/{id}")
+	@POST
+	@Path("upvote")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response upvote(@PathParam("id") long id) throws AppException {
+	@Consumes({MediaType.APPLICATION_JSON})
+	public Response upvote(WorkAround workAround) throws AppException {
 		LOG.info("In upvote");
 		try {
-			long result = workAroundService.upvote(id);
+			long result = workAroundService.upvote(workAround);
 			if(result > 0) {
 				return Response.status(Response.Status.OK).entity(new SuccessMessage(Response.Status.OK.getStatusCode(),"WorkAround upvoted Successfully")).build();
 			}else {

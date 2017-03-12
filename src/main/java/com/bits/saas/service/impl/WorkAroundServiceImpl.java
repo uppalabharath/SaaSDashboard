@@ -8,11 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bits.saas.dao.ICustomerDao;
+import com.bits.saas.dao.IProductDao;
 import com.bits.saas.dao.IWorkAroundDao;
+import com.bits.saas.dao.IWorkAroundDetailDao;
 import com.bits.saas.exception.DaoException;
 import com.bits.saas.exception.ServiceException;
+import com.bits.saas.pojo.Customer;
 import com.bits.saas.pojo.WorkAround;
 import com.bits.saas.service.IWorkAroundService;
+import com.bits.saas.util.ReputationCalulationUtil;
 
 @Service("IWorkAroundService")
 @Transactional
@@ -22,6 +27,12 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 
 	@Autowired
 	private IWorkAroundDao workAroundDao;
+	
+	@Autowired private IProductDao productDao;
+	
+	@Autowired private ICustomerDao customerDao;
+	
+	@Autowired private IWorkAroundDetailDao workAroundDetailDao;
 
 	@Override
 	public long create(WorkAround workAround) throws ServiceException {
@@ -74,13 +85,27 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 	}
 
 	@Override
-	public long upvote(long id) throws ServiceException {
+	public long upvote(WorkAround workAround) throws ServiceException {
 		LOG.info("In upvote");
 		try {
-			return workAroundDao.upvote(id);
+			long result = workAroundDetailDao.create(workAround.getId(), workAround.getCustomer().getId());
+			if(result > 0){
+				float reputation = ReputationCalulationUtil.calculateReputation(getCustomer(workAround.getCustomer().getId()));
+				WorkAround fetchedWorkAround = get(workAround.getId());
+				Customer fetchedCustomer = getCustomer(fetchedWorkAround.getCustomer().getId());
+				customerDao.updateRevenueandReputation(fetchedCustomer.getId(), 0, reputation);
+				productDao.updateRevenueandReputation(fetchedCustomer.getProduct().getId(), 0, reputation);
+			}else{
+				throw new ServiceException("WorkAround Upvote process failed");
+			}
+			return workAroundDao.upvote(workAround.getId());
 		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
 	}
+	
+	private Customer getCustomer(long id) throws DaoException{
+		return customerDao.get(id);
+	} 
 
 }
