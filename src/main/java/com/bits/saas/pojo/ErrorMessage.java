@@ -55,7 +55,6 @@ public class ErrorMessage implements Serializable{
 	}
 
 	public ErrorMessage(AppException appEx) {
-		//TODO Use Beanutils to copy the properties
 		this.code = appEx.getCode();
 		this.status = appEx.getStatus();
 		this.message = appEx.getMessage();

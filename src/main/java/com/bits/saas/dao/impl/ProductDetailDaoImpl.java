@@ -35,7 +35,6 @@ public class ProductDetailDaoImpl implements IProductDetailDao {
 
 	@Override
 	public long update(ProductDetail productDetail) throws DaoException {
-		// TODO Auto-generated method stub
 		LOG.info("In update product Detail");
 		try {
 			return jdbcTemplate.update(DBQueries.PRODUCTDETAIL_UPDATE_BYPRODID, new Object[] {
