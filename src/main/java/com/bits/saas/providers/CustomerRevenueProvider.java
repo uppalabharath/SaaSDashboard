@@ -73,7 +73,7 @@ public class CustomerRevenueProvider {
 		try{
 			return Response.ok(customerRevenueService.getRevenueByProduct(id)).build();
 		}catch(ServiceException servEx){
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Revenue retrieval failed");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"Revenue retrieval failed");
 		}
 	}
 	
@@ -84,7 +84,7 @@ public class CustomerRevenueProvider {
 		try{
 			return Response.ok(customerRevenueService.getRevenueByCustomer(id)).build();
 		}catch(ServiceException servEx){
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Revenue retrieval failed");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"Revenue retrieval failed");
 		}
 	}
 

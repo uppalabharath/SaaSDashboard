@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 
 import com.bits.saas.pojo.Customer;
 import com.bits.saas.pojo.CustomerRevenue;
+import com.bits.saas.util.MonthNameResolverUtil;
 
 public class CustomerRevenueRSExtractor implements ResultSetExtractor<CustomerRevenue> {
 	
@@ -18,6 +19,7 @@ public class CustomerRevenueRSExtractor implements ResultSetExtractor<CustomerRe
 		customer.setId(rs.getLong(1));
 		customerRevenue.setCustomer(customer);
 		customerRevenue.setMonth(rs.getInt(2));
+		customerRevenue.setMonthName(MonthNameResolverUtil.getMonthName(rs.getInt(2)));
 		customerRevenue.setYear(rs.getInt(3));
 		customerRevenue.setAmount(rs.getFloat(4));
 		return customerRevenue;

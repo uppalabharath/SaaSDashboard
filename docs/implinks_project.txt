@@ -62,6 +62,7 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     **http://stackoverflow.com/questions/21786492/if-statement-in-ng-click
     **http://stackoverflow.com/questions/34869287/ng-messages-not-displaying-validation-errors-properly
     http://stackoverflow.com/questions/25866121/angular-js-show-message-if-ng-repeat-is-empty
+    **https://www.sitepoint.com/easy-form-validation-angularjs-ngmessages/
     -- angular js plugin for eclipse --
     https://github.com/angelozerr/angularjs-eclipse
     https://github.com/angelozerr/angularjs-eclipse/wiki/Getting-Started
@@ -201,3 +202,4 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     
     Verify Feature request and complete the provider
     Try to finish the product detail UI and start the Customer UI
+    Customer delete needs to be reviewed

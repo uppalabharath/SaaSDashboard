@@ -13,6 +13,8 @@ public class CustomerRevenue implements Serializable {
 	private float amount;
 	
 	private Customer customer;
+	
+	private String monthName;
 
 	public int getMonth() {
 		return month;
@@ -44,6 +46,14 @@ public class CustomerRevenue implements Serializable {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getMonthName() {
+		return monthName;
+	}
+
+	public void setMonthName(String monthName) {
+		this.monthName = monthName;
 	}
 
 }

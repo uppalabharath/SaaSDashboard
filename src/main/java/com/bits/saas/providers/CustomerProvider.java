@@ -51,8 +51,7 @@ public class CustomerProvider {
 		try {
 			return Response.ok(customerService.get(id)).build();
 		} catch (ServiceException servEx) {
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), 500, servEx.getMessage(),
-					"Customer retrieval failed with server error");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"The requested customer is not found");
 		}
 	}
 
@@ -107,8 +106,7 @@ public class CustomerProvider {
 		try {
 			return Response.ok(customerService.getCustomersbyProductId(id)).build();
 		} catch (ServiceException servEx) {
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), 500, servEx.getMessage(),
-					"Customer retrieval failed with server error");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"No customers found for given product id");
 		}
 	}
 
