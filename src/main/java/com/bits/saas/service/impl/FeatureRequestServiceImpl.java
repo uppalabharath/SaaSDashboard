@@ -42,7 +42,12 @@ public class FeatureRequestServiceImpl implements IFeatureRequestService {
 		try {
 				customer = getCustomer(request.getCustomer().getId());
 				request.setImpactFactor(calculateImpactFactor(customer.getReputation(), customer.getProduct().getReputation()));
-				return requestDao.create(request);
+				long result = requestDao.create(request);
+				if(result > 0){
+					return requestDetailDao.create(result, request.getCustomer().getId());
+				}else{
+					throw new ServiceException("Feature Request creation failed");
+				}
 		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
@@ -104,12 +109,15 @@ public class FeatureRequestServiceImpl implements IFeatureRequestService {
 		try {
 			long result = requestDetailDao.create(request.getId(), request.getCustomer().getId());
 			if(result > 0){
-				float reputation = ReputationCalulationUtil.calculateReputation(getCustomer(request.getCustomer().getId()));
+				customer = getCustomer(request.getCustomer().getId());
+				float reputation = ReputationCalulationUtil.calculateReputation(customer);
+				float impactFactor = calculateImpactFactor(customer.getReputation(), customer.getProduct().getReputation());
+				request.setImpactFactor(impactFactor);
 				FeatureRequest featureRequest = get(request.getId());
 				customerDao.updateRevenueandReputation(featureRequest.getCustomer().getId(), 0, reputation);
 				productDao.updateRevenueandReputation(featureRequest.getCustomer().getProduct().getId(), 0, reputation);
 			}else{
-				throw new ServiceException("Upvote failed. ");
+				throw new ServiceException("Already upvoted by the customer with id:: "+request.getCustomer().getId());
 			}
 			return requestDao.upvote(request);
 		} catch (DaoException daEx) {
@@ -133,11 +141,23 @@ public class FeatureRequestServiceImpl implements IFeatureRequestService {
 		if(productReputation == 0){
 			productReputation = 1;
 		}
-		return customerReputation/productReputation;
+		return (customerReputation/productReputation)*100;
 	}
 	
 	private Customer getCustomer(long id) throws DaoException{
 		return customerDao.get(id);
+	}
+
+	@Override
+	public void recalculateImpactFactors(long id) throws ServiceException {
+		LOG.info("In recalculate");
+		try{
+			requestDao.recalculateImpactFactors(id);
+		}catch(DaoException daoEx){
+			LOG.error(daoEx);
+			throw new ServiceException(daoEx.getMessage(),daoEx);
+		}
+		
 	}
 
 }

@@ -22,4 +22,6 @@ public interface IFeatureRequestDao {
 	long upvote(FeatureRequest request) throws DaoException;
 	
 	long freeze(long id) throws DaoException;
+	
+	void recalculateImpactFactors(long id) throws DaoException; 
 }

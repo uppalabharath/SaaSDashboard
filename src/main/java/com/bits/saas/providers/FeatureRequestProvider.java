@@ -89,7 +89,7 @@ public class FeatureRequestProvider {
 		try{
 			return Response.ok(requestService.getRequestsByCustomer(id)).build();
 		}catch(ServiceException servEx){
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"FeatureRequest update failed with server error");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"FeatureRequest update failed with server error");
 		}
 	}
 	
@@ -101,7 +101,7 @@ public class FeatureRequestProvider {
 		try{
 			return Response.ok(requestService.getRequestsByProduct(id)).build();
 		}catch(ServiceException servEx){
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Server error");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"Server error");
 		}
 	}
 	
@@ -113,7 +113,7 @@ public class FeatureRequestProvider {
 		try{
 			return Response.ok(requestService.get(id)).build();
 		}catch(ServiceException servEx){
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Server error");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"Server error");
 		}
 	}
 	
@@ -132,6 +132,20 @@ public class FeatureRequestProvider {
 			}
 		}catch(ServiceException servEx){
 			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Server error");
+		}
+	}
+	
+	@GET
+	@Path("recalculate/{id}")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response recalculateImportFactors(@PathParam("id") long id) throws AppException {
+		LOG.info("In recalculate");
+		try{
+			requestService.recalculateImpactFactors(id);
+			return Response.ok(new SuccessMessage(Response.Status.OK.getStatusCode(),"Import Factors recalculated successfully")).build();
+		}catch(ServiceException servEx){
+			LOG.error(servEx);
+			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Recalculate Import Factors failed");
 		}
 	}
 

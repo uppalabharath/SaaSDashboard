@@ -25,12 +25,18 @@ public class FeatureRequestDaoImpl implements IFeatureRequestDao {
 	public long create(FeatureRequest request) throws DaoException {
 		LOG.info("In Create");
 		try{
-			return jdbcTemplate.update(DBQueries.FEATUREREQUEST_INSERT, new Object[] {
+			long requestId = jdbcTemplate.queryForObject(DBQueries.FEATUREREQUEST_GET_SEQ, Long.class);
+			long result = jdbcTemplate.update(DBQueries.FEATUREREQUEST_INSERT, new Object[] {
+				requestId,	
 				request.getSubject(),
 				request.getDescription(),
 				request.getImpactFactor(),
 				request.getCustomer().getId()
 			});
+			if(result > 0){
+				return requestId;
+			}
+			return result;
 		}catch(DataAccessException daEx){
 			throw new DaoException(daEx.getMessage(),daEx);
 		}
@@ -105,6 +111,17 @@ public class FeatureRequestDaoImpl implements IFeatureRequestDao {
 					1
 			});
 		}catch(DataAccessException daEx){
+			throw new DaoException(daEx.getMessage(), daEx);
+		}
+	}
+
+	@Override
+	public void recalculateImpactFactors(long id) throws DaoException {
+		LOG.info("In recalculate");
+		try{
+			jdbcTemplate.update(DBQueries.FEATUREREQUEST_RECALCULATE_IMPORT_FACTORS, new Object[]{id});
+		}catch(DataAccessException daEx){
+			LOG.error(daEx);
 			throw new DaoException(daEx.getMessage(), daEx);
 		}
 	}

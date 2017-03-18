@@ -168,6 +168,11 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     http://localhost:8080/SaasDashboard/rest/revenue/all/customer/1
     http://localhost:8080/SaasDashboard/rest/revenue/delete
     {"month":1,"year":2017,"amount":120.45,"customer":{"id":1}}
+    http://localhost:8080/SaasDashboard/rest/featurerequest/create
+    http://localhost:8080/SaasDashboard/rest/featurerequest/{id}
+    http://localhost:8080/SaasDashboard/rest/featurerequest/upvote
+    http://localhost:8080/SaasDashboard/rest/featurerequest/all/product/{id}
+    http://localhost:8080/SaasDashboard/rest/featurerequest/recalculate/{id}
     
     http://localhost:8080/SaasDashboard/test/ent/1
     
@@ -203,3 +208,22 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     Verify Feature request and complete the provider
     Try to finish the product detail UI and start the Customer UI
     Customer delete needs to be reviewed
+    
+    -- 18 March --
+    Complete the UI for feature request and workaround
+    Insert into spfeaturereqvotedetail when a fr is created -- change crate method as in productdaoimpl
+    
+    write a proc that does the following
+    Get the product reputation from product id
+    Write big query to get the list of unfreezed fr for this product
+    For each fr get the details of upvoted customers
+    Get each customer reputation and divide it with product reputation do this in loop
+    update this for the fr impact factor
+    
+    -- To reset revenue and reputation --
+    delete from spfeaturereqvotedetail;
+delete from spfeaturerequest;
+delete from spcustomerrevenue;
+update spcustomer set reputation=0,revenue=0;
+update spproduct set reputation=0,revenue=0;
+commit;

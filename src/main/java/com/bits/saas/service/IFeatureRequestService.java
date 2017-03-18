@@ -22,5 +22,7 @@ public interface IFeatureRequestService {
 	long upvote(FeatureRequest request) throws ServiceException;
 	
 	long freeze(long id) throws ServiceException;
+	
+	void recalculateImpactFactors(long id) throws ServiceException;
 
 }
