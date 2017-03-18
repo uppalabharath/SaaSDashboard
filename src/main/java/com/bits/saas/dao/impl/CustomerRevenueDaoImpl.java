@@ -44,6 +44,7 @@ public class CustomerRevenueDaoImpl implements ICustomerRevenueDao {
 	public long delete(CustomerRevenue customerRevenue) throws DaoException {
 		LOG.info("In delete");
 		try {
+			
 			return jdbcTemplate.update(DBQueries.REVENUE_DELETE_BY_CUSTID_MONTH_YEAR,new Object[] {
 				customerRevenue.getCustomer().getId(),
 				customerRevenue.getMonth(),
@@ -70,6 +71,20 @@ public class CustomerRevenueDaoImpl implements ICustomerRevenueDao {
 		try {
 			return jdbcTemplate.query(DBQueries.REVENUE_SELECT_BYCUSTID, new Object[]{id},new CustomerRevenueRowMapper());
 		} catch (DataAccessException daEx) {
+			throw new DaoException(daEx.getMessage(), daEx);
+		}
+	}
+	
+	@Override
+	public float getAmountByCustIdMonthYear(CustomerRevenue customerRevenue) throws DaoException{
+		try{
+			return jdbcTemplate.queryForObject(DBQueries.REVENUE_SELECT_BY_CUSTID_MONTH_YEAR, 
+					new Object[]{
+							customerRevenue.getCustomer().getId(),
+							customerRevenue.getMonth(),
+							customerRevenue.getYear()
+					}, Float.class);
+		}catch(DataAccessException daEx){
 			throw new DaoException(daEx.getMessage(), daEx);
 		}
 	}

@@ -17,4 +17,5 @@ public interface ICustomerRevenueDao {
 	
 	public List<CustomerRevenue> getRevenueByCustomer(long id) throws DaoException;
 
+	public float getAmountByCustIdMonthYear(CustomerRevenue customerRevenue) throws DaoException;
 }

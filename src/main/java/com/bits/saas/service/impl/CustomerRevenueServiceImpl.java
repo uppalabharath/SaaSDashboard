@@ -57,11 +57,12 @@ public class CustomerRevenueServiceImpl implements ICustomerRevenueService {
 	public long delete(CustomerRevenue customerRevenue) throws ServiceException {
 		LOG.info("In delete");
 		try{
+			float amount = customerRevenueDao.getAmountByCustIdMonthYear(customerRevenue);
 			long result = customerRevenueDao.delete(customerRevenue);
 			if(result > 0){
 				Customer customer = customerDao.get(customerRevenue.getCustomer().getId());
-				customerDao.updateRevenueandReputation(customer.getId(), 0 - customerRevenue.getAmount(), 0 - customerRevenue.getAmount());
-				return productDao.updateRevenueandReputation(customer.getProduct().getId(), 0 - customerRevenue.getAmount(), 0 - customerRevenue.getAmount());
+				customerDao.updateRevenueandReputation(customer.getId(), 0 - amount, 0 - amount);
+				return productDao.updateRevenueandReputation(customer.getProduct().getId(), 0 - amount, 0 - amount);
 			}else{
 				throw new ServiceException("Deletion of customer revenue failed. ");
 			}
