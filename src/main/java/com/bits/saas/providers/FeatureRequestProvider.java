@@ -89,7 +89,7 @@ public class FeatureRequestProvider {
 		try{
 			return Response.ok(requestService.getRequestsByCustomer(id)).build();
 		}catch(ServiceException servEx){
-			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"FeatureRequest update failed with server error");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"FeatureRequests not found for the given customer id");
 		}
 	}
 	

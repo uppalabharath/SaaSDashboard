@@ -173,6 +173,13 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     http://localhost:8080/SaasDashboard/rest/featurerequest/upvote
     http://localhost:8080/SaasDashboard/rest/featurerequest/all/product/{id}
     http://localhost:8080/SaasDashboard/rest/featurerequest/recalculate/{id}
+    http://localhost:8080/SaasDashboard/rest/featurerequest/all/customer/{id}
+    http://localhost:8080/SaasDashboard/rest/featurerequest/update
+    http://localhost:8080/SaasDashboard/rest/workaround/all/request/{id}
+    http://localhost:8080/SaasDashboard/rest/workaround/create
+    http://localhost:8080/SaasDashboard/rest/workaround/upvote
+    http://localhost:8080/SaasDashboard/rest/workaround/{id}
+    http://localhost:8080/SaasDashboard/rest/workaround/update
     
     http://localhost:8080/SaasDashboard/test/ent/1
     
@@ -219,6 +226,8 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     For each fr get the details of upvoted customers
     Get each customer reputation and divide it with product reputation do this in loop
     update this for the fr impact factor
+    
+    Update WorkAround entity for the dates
     
     -- To reset revenue and reputation --
     delete from spfeaturereqvotedetail;

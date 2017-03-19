@@ -27,11 +27,18 @@ public class WorkAroundDaoImpl implements IWorkAroundDao {
 	public long create(WorkAround workAround) throws DaoException {
 		LOG.info("In Create");
 		try {
-			return jdbcTemplate.update(DBQueries.WORKAROUND_INSERT, new Object[]{
+			long workAroundId = jdbcTemplate.queryForObject(DBQueries.WORKAROUND_GET_SEQ, Long.class);
+			long result = jdbcTemplate.update(DBQueries.WORKAROUND_INSERT, new Object[]{
+					workAroundId,
 					workAround.getDescription(),
 					workAround.getCustomer().getId(),
 					workAround.getFeatureRequest().getId()
 			});
+			if(result > 0) {
+				return workAroundId;
+			}
+			return result;
+			
 		} catch (DataAccessException daEx) {
 			throw new DaoException(daEx.getMessage(), daEx);
 		}

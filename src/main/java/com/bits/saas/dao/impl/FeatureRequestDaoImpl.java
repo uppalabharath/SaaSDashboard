@@ -47,10 +47,13 @@ public class FeatureRequestDaoImpl implements IFeatureRequestDao {
 		LOG.info("In Update");
 		try{
 			return jdbcTemplate.update(DBQueries.FEATUREREQUEST_UPDATE_BYID, new Object[]{
+					request.getSubject(),
+					request.getDescription(),
 					request.getCustomer().getId(),
 					request.getId()
 			});
 		}catch(DataAccessException daEx){
+			LOG.error(daEx);
 			throw new DaoException(daEx.getMessage(),daEx);
 		}
 	}

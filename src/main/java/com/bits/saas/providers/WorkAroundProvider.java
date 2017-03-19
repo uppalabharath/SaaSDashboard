@@ -86,19 +86,19 @@ public class WorkAroundProvider {
 		try {
 			return Response.ok(workAroundService.get(id)).build();
 		}catch(ServiceException servEx){
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Workaround retrieval failed with server error");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"Workaround retrieval failed with server error");
 		}
 	}
 	
 	@GET
-	@Path("all/{id}")
+	@Path("all/request/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAllbyRequest(@PathParam("id") long id) throws AppException {
 		LOG.info("In getAllbyRequest");
 		try {
 			return Response.ok(workAroundService.getAllbyRequest(id)).build();
 		}catch(ServiceException servEx){
-			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),500,servEx.getMessage(),"Workaround retrieval failed with server error");
+			throw new AppException(Response.Status.NOT_FOUND.getStatusCode(),404,servEx.getMessage(),"Workaround retrieval failed with server error");
 		}
 	}
 	

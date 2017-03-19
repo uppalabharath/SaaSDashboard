@@ -38,7 +38,12 @@ public class WorkAroundServiceImpl implements IWorkAroundService {
 	public long create(WorkAround workAround) throws ServiceException {
 		LOG.info("In create");
 		try {
-			return workAroundDao.create(workAround);
+			long workAroundId = workAroundDao.create(workAround);
+			if(workAroundId > 0){
+				return workAroundDetailDao.create(workAroundId, workAround.getCustomer().getId());
+			}else{
+				throw new ServiceException("Workaround create failed");
+			}
 		} catch (DaoException daEx) {
 			throw new ServiceException(daEx.getMessage(), daEx);
 		}
