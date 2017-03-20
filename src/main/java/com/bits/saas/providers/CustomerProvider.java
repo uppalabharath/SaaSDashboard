@@ -100,7 +100,7 @@ public class CustomerProvider {
 	}
 
 	@GET
-	@Path("all/{id}")
+	@Path("all/product/{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response getAllByProductId(@PathParam("id") long id) throws AppException {
 		try {

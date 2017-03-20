@@ -189,7 +189,7 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     https://github.com/uppalabharath/SaaSDashboard_client.git
     
     http://www.isro.gov.in/recruitment-to-post-of-scientist-engineer-%E2%80%98sc%E2%80%99-disciplines-of-electronics-mechanical-and-computer
-    
+    https://github.com/takezoe/amateras-modeler
     
     -- 4 March 2017 --
     provider for WorkAround -- done
@@ -227,7 +227,7 @@ http://howtodoinjava.com/jersey/jersey-2-hello-world-application-tutorial/
     Get each customer reputation and divide it with product reputation do this in loop
     update this for the fr impact factor
     
-    Update WorkAround entity for the dates
+    Update WorkAround entity for the dates -- done
     
     -- To reset revenue and reputation --
     delete from spfeaturereqvotedetail;
@@ -236,3 +236,9 @@ delete from spcustomerrevenue;
 update spcustomer set reputation=0,revenue=0;
 update spproduct set reputation=0,revenue=0;
 commit;
+
+Update data model -- done -- refine if needed  
+Create class diagrams -- done
+Documentation
+Make enterprise UI in sync with other pages
+Create index.html for quick navigation between pages
