@@ -239,6 +239,20 @@ commit;
 
 Update data model -- done -- refine if needed  
 Create class diagrams -- done
-Documentation
-Make enterprise UI in sync with other pages
-Create index.html for quick navigation between pages
+Documentation -- done
+Make enterprise UI in sync with other pages -- done
+Create index.html for quick navigation between pages -- done
+
+Prepare PPT and get the signatures from Mummy and Sujan
+-- PPT Overview --
+Objective
+Business Use cases and Actors
+Views
+Impact factor and reputation calculation
+Technical features
+Future Scope
+Conclusion
+Thank You
+
+Remove coupling from the database by incorporating an ORM like hibernate
+Integration with other systems like BugTracker and knowledge base
