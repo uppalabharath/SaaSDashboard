@@ -256,3 +256,5 @@ Thank You
 
 Remove coupling from the database by incorporating an ORM like hibernate
 Integration with other systems like BugTracker and knowledge base
+
+Sign the papers and upload the documents to BITS
