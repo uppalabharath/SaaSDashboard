@@ -8,7 +8,7 @@
 	<name>SaasDashboard Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<jersey2.version>2.25.1</jersey2.version>
+		<jersey2.version>2.46</jersey2.version>
 		<jaxrs.version>2.0.1</jaxrs.version>
 	</properties>
 	<dependencies>
